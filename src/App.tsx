@@ -21,6 +21,7 @@ export default function App() {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
   const [isClientPortal, setIsClientPortal] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   if (isClientPortal) {
     return (
@@ -136,17 +137,24 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen bg-[#FAFAFA] text-[#0A0A0A] font-sans selection:bg-black selection:text-white">
-      <Sidebar activeTab={activeTab} setActiveTab={(tab) => {
-        setActiveTab(tab);
-        setSelectedProjectId(null);
-        setSelectedRoomId(null);
-      }} />
+      <Sidebar 
+        activeTab={activeTab} 
+        setActiveTab={(tab) => {
+          setActiveTab(tab);
+          setSelectedProjectId(null);
+          setSelectedRoomId(null);
+          setIsSidebarOpen(false);
+        }} 
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
       
       <div className="flex-1 flex flex-col min-w-0">
         <Header 
           title={getPageTitle()} 
           language={language} 
           setLanguage={setLanguage}
+          onMenuClick={() => setIsSidebarOpen(true)}
           breadcrumbs={selectedRoomId ? [
             { label: 'Проекты' },
             { label: 'Пентхаус в ЖК "Tashkent City"' },
@@ -157,7 +165,7 @@ export default function App() {
           ] : undefined}
         />
         
-        <main className="flex-1 p-8 overflow-y-auto">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto overflow-x-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={(selectedRoomId || selectedProjectId || activeTab)}
