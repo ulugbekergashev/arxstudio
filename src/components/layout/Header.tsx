@@ -61,7 +61,7 @@ export function Header({ title, breadcrumbs, language, setLanguage }: HeaderProp
         </DropdownMenu>
 
         <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center text-white text-sm font-medium">
-          АУ
+          БШ
         </div>
       </div>
     </header>

@@ -93,11 +93,11 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         
         <div className="flex items-center gap-3 px-3 py-2.5">
           <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0">
-            <span className="text-xs font-medium">АУ</span>
+            <span className="text-xs font-medium">БШ</span>
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">Алишер Усманов</p>
+              <p className="text-sm font-medium truncate">Бекзод Шорахмедов</p>
               <p className="text-xs text-muted-foreground truncate">Designer</p>
             </div>
           )}
